@@ -1,0 +1,7 @@
+{
+  "name": "building-basem-app-2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
