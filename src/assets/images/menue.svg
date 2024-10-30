@@ -1,0 +1,5 @@
+<svg id="menue" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <path id="Path_1" data-name="Path 1" d="M32,0H0V32H32Z" fill="none"/>
+  <line id="Line_1" data-name="Line 1" x1="21.333" transform="translate(5.333 12)" fill="none" stroke="#2a6fdb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <line id="Line_2" data-name="Line 2" x1="13.333" transform="translate(13.333 20)" fill="none" stroke="#2a6fdb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+</svg>

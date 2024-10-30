@@ -1,0 +1,36 @@
+<!-- <ion-header>
+  <ion-toolbar color="light">
+    <ion-title>الخريطة</ion-title>
+    <ion-button slot="end" (click)="sumbit()" fill="outline" color="primary" shape="round">
+      حفظ
+    </ion-button>
+    <ion-button style="margin-inline-start:30px" slot="end" (click)="close()" fill="outline" color="danger"
+      shape="round">
+      الغاء
+    </ion-button>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="map-ion-content">
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+  <div #map class="map"></div>
+
+  <!-- <capacitor-google-map #map id="map"></capacitor-google-map> -->
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-button fill="clear" class="myLocation" mode="ios" (click)="setCurrentLocation()">
+      <!-- <img src="../../../assets/Icon&Svg/8.my location/svg/my_location.svg" alt=""> -->
+      موقعي
+    </ion-button>
+  </ion-fab>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="sumbit()" expand="block" fill="solid" color="primary">
+      تأكيد
+    </ion-button>
+    <ion-button slot="end" (click)="close()" fill="solid" color="light">
+      الغاء
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

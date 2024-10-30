@@ -1,0 +1,75 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="back()">
+      <img src="../../assets/images/back.svg">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <h1 class="title_category animate__animated animate__fadeInUp duration">المعلومات الشخصية</h1>
+
+    <div class="profile-img animate__animated animate__fadeInBottomLeft duration fast">
+      <div class="pic">
+        <img [lazyLoad]="image?.data || userData?.image ||'../../../assets/images/userplaceholder.png'"
+          [errorImage]="'../../../assets/images/userplaceholder.png'" alt="">
+      </div>
+      <div class="edit" (click)="selectImage()">
+        <img src="../../../assets/images/edit.svg" alt="">
+      </div>
+    </div>
+    <form [formGroup]="form">
+
+      <ion-list lines="none">
+
+        <div class="item_box animate__animated animate__fadeInBottomLeft duration">
+          <div class="name">
+            <p>الاسم</p>
+          </div>
+          <ion-item>
+            <ion-input formControlName="fullName" type="text" placeholder="ادخل الاسم كامل">
+            </ion-input>
+          </ion-item>
+        </div>
+
+        <div class="item_box animate__animated animate__fadeInBottomLeft duration">
+          <div class="name">
+            <p>العنوان</p>
+          </div>
+          <ion-item>
+            <ion-input formControlName="address" type="text" placeholder="مثال : iraqsoft">
+            </ion-input>
+          </ion-item>
+        </div>
+
+
+
+        <div class="item_box animate__animated animate__fadeInBottomLeft duration">
+          <div class="name">
+            <p>رقم الهاتف</p>
+          </div>
+          <ion-item>
+            <ion-input [value]="userData?.phone" placeholder="X X X X X X X X X X" type="tel" disabled>
+            </ion-input>
+            <div class="phone" slot="end">
+              <span>964+</span>
+            </div>
+          </ion-item>
+        </div>
+
+
+      </ion-list>
+    </form>
+
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="submit()" mode="ios" class="submit animate__animated animate__fadeInBottomLeft duration"
+      expand="block" [disabled]="form.invalid">
+      حفظ
+    </ion-button>
+
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,165 @@
+<ion-content>
+  <div class="header-image">
+    <ion-button slot="start" (click)="back()">
+      <img src="../../../assets/images/back2.svg" alt="">
+    </ion-button>
+    <ion-button slot="end" (click)="directShare()">
+      <img src="../../../assets/images/share.svg" alt="">
+    </ion-button>
+  </div>
+  <!-- <swiper #mySlide dir="rtl" [pagination]="{
+    type: 'fraction'
+  }" [navigation]="false" class="mySwiper detaileSlide">
+    <ng-template *ngFor="let img of build?.images" swiperSlide>
+      <img [defaultImage]="'../../../assets/images/buildplaceholder.png'" [lazyLoad]="img" alt="">
+    </ng-template>
+    <ng-template *ngIf="build?.images.length==0" swiperSlide>
+      <img src="../../../assets/images/buildplaceholder.png" alt="">
+    </ng-template>
+  </swiper> -->
+
+  <swiper-container dir="rtl" [slidesPerView]="1" [spaceBetween]="0" autoplay="false" [loop]="false"
+    direction="horizontal" [pagination]="{clickable:true,dynamicBullets:true,type:'fraction'}">
+    <swiper-slide *ngFor="let img of build?.images">
+      <img [defaultImage]="'../../../assets/images/buildplaceholder.png'" [lazyLoad]="img" alt="">
+    </swiper-slide>
+    <swiper-slide *ngIf="build?.images.length==0" #swiperSlide>
+      <img src="../../../assets/images/buildplaceholder.png" alt="">
+    </swiper-slide>
+  </swiper-container>
+  <div class="body_details">
+    <div class="title_headbox">
+      <h1>{{build?.title}}</h1>
+      <p slot="end">{{build?.createdAt |date}}</p>
+    </div>
+    <p class="price">{{build?.price |number}} IQD</p>
+    <div class="location" *ngIf="build?.location">
+      <div class="img">
+        <img src="../../../assets/images/map_i.svg" alt="">
+      </div>
+      <div class="content_location">
+        <p>الموقع</p>
+        <p>{{build?.address}}</p>
+      </div>
+      <div class="map" *ngIf="build.location?.coordinates[0]" (click)="openMap(build?.location.coordinates)">
+        <img src="../../../assets/images/map_i.svg" alt="">
+      </div>
+    </div>
+    <div class="options">
+      <div class="option" *ngIf="build?.area">
+        <img src="../../../assets/images/size.svg" alt="">
+        <div class="content">
+          <p>المساحة</p>
+          <p>{{build?.area}} م2</p>
+        </div>
+      </div>
+      <div class="option" *ngIf="build?.interface">
+        <img src="../../../assets/images/size.svg" alt="">
+        <div class="content">
+          <p>الواجهه</p>
+          <p>{{build?.interface}} م2</p>
+        </div>
+      </div>
+      <div class="option" *ngIf="build?.depth">
+        <img src="../../../assets/images/size.svg" alt="">
+        <div class="content">
+          <p>النزال</p>
+          <p>{{build?.depth}} م2</p>
+        </div>
+      </div>
+      <div class="option" *ngIf="build?.roomsNumber">
+        <img src="../../../assets/images/bed.svg" alt="">
+        <div class="content">
+          <p>الغرف</p>
+          <p>{{build?.roomsNumber}} غرف</p>
+        </div>
+      </div>
+      <div class="option" *ngIf="build?.floorsNumber">
+        <!-- <img src="../../../assets/images/bed.svg" alt=""> -->
+        <div class="content">
+          <p>عدد الطوابق</p>
+          <p>{{build?.floorsNumber}} طابق</p>
+        </div>
+      </div>
+      <div class="option" *ngIf="build?.bathroomNumber">
+        <img src="../../../assets/images/bath_room.svg" alt="">
+        <div class="content">
+          <p>الحمامات</p>
+          <p>{{build?.bathroomNumber ?build?.bathroomNumber+ ' حمام':'....' }}</p>
+        </div>
+      </div>
+      <div class="option" *ngIf="build?.adType">
+        <!-- <img src="../../../assets/images/bath_room.svg" alt=""> -->
+        <div class="content">
+          <p>نوع الاعلان</p>
+          <p>{{build?.adType?.name }}</p>
+        </div>
+      </div>
+      <div class="option" *ngIf="build?.adGender">
+        <!-- <img src="../../../assets/images/bath_room.svg" alt=""> -->
+        <div class="content">
+          <p>جنس الاعلان</p>
+          <p>{{build?.adGender?.name }}</p>
+        </div>
+      </div>
+      <div class="option" *ngIf="build?.bondType">
+        <!-- <img src="../../../assets/images/bath_room.svg" alt=""> -->
+        <div class="content">
+          <p>نوع السند</p>
+          <p>{{build?.bondType?.name }}</p>
+        </div>
+      </div>
+      <div class="option" *ngIf="build?.buildYear">
+        <!-- <img src="../../../assets/images/bath_room.svg" alt=""> -->
+        <div class="content">
+          <p>سنة البناء</p>
+          <p>{{build?.buildYear }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="list">
+      <div class="item_box">
+        <p class="start">الطابق</p>
+        <p class="end">الأول</p>
+      </div>
+      <div class="item_box">
+        <p class="start">التجهيز</p>
+        <p class="end">كاملة</p>
+      </div>
+      <div class="item_box">
+        <p class="start">سنة البناء</p>
+        <p class="end">2021</p>
+      </div>
+    </div> -->
+    <div class="description" *ngIf="build?.description">
+      <h6>الوصف</h6>
+      <p [innerText]="build?.description"></p>
+    </div>
+
+    <!-- <div class="userProfile" (click)="toProfile()" *ngIf="build?.userId?._id">
+      <ion-avatar slot="start">
+        <img [defaultImage]="'../../../assets/images/userplaceholder.png'" [lazyLoad]="build.userId?.image" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{build.userId?.fullName||'....'}}</h2>
+        <p>{{build.userId?.countAdds |number}} اعلان</p>
+      </ion-label>
+      <ion-icon slot="end" name="chevron-back-circle-outline"></ion-icon>
+
+    </div> -->
+  </div>
+
+</ion-content>
+<div class="myFooter">
+  <ion-buttons>
+    <ion-button [disabled]="!build?.whatsapp" (click)="whatsapp(build.phoneCall)">
+      <img src="../../../assets/images/msg.svg" alt="">
+      مراسلة
+    </ion-button>
+    <ion-button [disabled]="!build?.phoneCall" (click)="call(build.phoneCall)">
+      <img src="../../../assets/images/call.svg" alt="">
+      إتصال
+    </ion-button>
+  </ion-buttons>
+
+</div>

@@ -1,0 +1,60 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="back()">
+      <img src="../../assets/images/back.svg">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="container">
+
+    <h1 class="title_category animate__animated animate__fadeInUp duration">الاشعارات</h1>
+
+    <ion-list lines="none">
+      <ion-item *ngFor="let noti of notification">
+        <ion-thumbnail slot="start">
+          <img [lazyLoad]="noti.image ||'../../../assets/images/buildplaceholder.png'"
+            [errorImage]="'../../../assets/images/buildplaceholder.png'" />
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{noti.title}}</h3>
+          <p>{{noti.body}}</p>
+        </ion-label>
+        <ion-text slot="end" color="primary">
+          <sub>{{noti?.createdAt | date:'d/M/yy, h:mm a'}}</sub>
+        </ion-text>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div *ngIf="emptyView" class="error-view">
+    <div class="content">
+      <ion-icon name="happy-outline"></ion-icon>
+      <ion-text color="medium">
+        <p>لا يوجد اشعارات حاليا</p>
+      </ion-text>
+    </div>
+  </div>
+
+  <div *ngIf="errorView" class="error-view">
+    <div class="content">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      <ion-text color="medium">
+        <p>خطأ بالشبكة يرجي المحاولة لاحقاً</p>
+      </ion-text>
+    </div>
+  </div>
+
+  <ion-infinite-scroll threshold="25%" [disabled]="disableInfinity" position="bottom" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,218 @@
+ion-header.add {
+  ion-title {
+    color: #040920;
+    text-align: center;
+    font-family: "bold";
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 20px;
+    font-family: "bold";
+
+    padding-inline: 16px;
+  }
+}
+swiper-container {
+  width: 100%;
+  //   height: 100%;
+  direction: ltr;
+
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 16px 16px 0;
+
+  //   padding-inline-start: 14px;
+
+  // --swiper-pagination-bullet-active-color: var(--ion-color-step-200, #c8973a);
+  --swiper-pagination-bullet-width: 10px;
+  --swiper-pagination-bullet-height: 10px;
+  --swiper-pagination-bullet-inactive-color: var(--ion-color-step-200, #363636);
+  --swiper-pagination-color: var(--gold, #3880ff);
+  --swiper-pagination-progressbar-bg-color: rgba(
+    var(--ion-text-color-rgb, 0, 0, 0),
+    0.25
+  );
+  --swiper-scrollbar-bg-color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.1);
+  --swiper-scrollbar-drag-bg-color: rgba(
+    var(--ion-text-color-rgb, 0, 0, 0),
+    0.5
+  );
+}
+swiper-slide {
+  display: flex;
+  position: relative;
+
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  max-height: 200px;
+  font-size: 18px;
+
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+swiper-slide img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+img.deleteBtn {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: unset;
+  object-fit: unset;
+  height: unset;
+  border-radius: unset;
+}
+
+// .swiper.addSlide {
+//   width: 100%;
+//   height: 300px;
+
+//   .swiper-slide {
+//     text-align: center;
+//     font-size: 18px;
+//     background: #fff;
+
+//     /* Center slide text vertically */
+//     display: -webkit-box;
+//     display: -ms-flexbox;
+//     display: -webkit-flex;
+//     display: flex;
+//     -webkit-box-pack: center;
+//     -ms-flex-pack: center;
+//     -webkit-justify-content: center;
+//     justify-content: center;
+//     -webkit-box-align: center;
+//     -ms-flex-align: center;
+//     -webkit-align-items: center;
+//     align-items: center;
+//     height: 100%;
+//     background: #e7e7ec;
+
+//     img.myImg {
+//       display: block;
+//       // width: 100%;
+//       // height: 100%;
+//       object-fit: cover;
+//     }
+
+//     img.deleteBtn {
+//       position: absolute;
+//       top: 10px;
+//       left: 20px;
+//     }
+//   }
+// }
+
+.header-image {
+  position: absolute;
+  z-index: 9;
+  padding-inline: 12px;
+  top: 8px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  ion-button {
+    --background: rgba(0, 0, 0, 0.5);
+    --border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    --padding-end: 0;
+    --padding-start: 0;
+  }
+}
+img.select-img {
+  object-fit: contain;
+}
+.container {
+  padding: 16px 16px 0px;
+  color: var(--dark-text);
+
+  .addForm {
+    p {
+      color: var(--dark-text);
+      font-family: "bold";
+      margin-top: 0;
+    }
+
+    .item_box {
+      border: 1px solid #87899e;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      height: 44px;
+      background-color: #fff;
+
+      ion-select {
+        --placeholder-color: var(--light-text);
+        --placeholder-opacity: 100%;
+      }
+    }
+
+    .item_boxLocation {
+      display: flex;
+      justify-content: space-around;
+      font-size: 14px;
+      margin-bottom: 18px;
+
+      .selectionBox {
+        padding: 12px 16px;
+        border: 1px solid #87899e;
+        border-radius: 8px;
+        transition: all 0.2;
+        text-align: center;
+        font-family: "bold";
+        color: #87899e;
+      }
+
+      .active {
+        border: 1px solid var(--ion-color-primary) !important;
+        color: var(--ion-color-primary) !important;
+        background: #2a6fdb26;
+      }
+    }
+  }
+}
+
+ion-footer {
+  ion-button {
+    font-family: "bold";
+    --border-radius: 8px;
+    border-radius: 8px;
+    height: 50px;
+    margin: 12px;
+  }
+
+  ion-buttons.options {
+    ion-button:first-of-type {
+      background: #f3f3f5;
+      --background: #f3f3f5;
+      color: #040920;
+    }
+
+    ion-button {
+      font-family: "bold";
+      --border-radius: 8px;
+      border-radius: 8px;
+      height: 50px;
+      margin: 12px;
+      width: 50%;
+    }
+  }
+}
+
+.items_multiBox {
+  display: flex;
+  gap: 12px;
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60.001" height="60" viewBox="0 0 60.001 60">
+  <g id="bulding" transform="translate(-2 -2)">
+    <path id="Path_6076" data-name="Path 6076" d="M4,2H33V58H4Z" fill="#b3bec4"/>
+    <path id="Path_6077" data-name="Path 6077" d="M20,32.148a3,3,0,0,0,3-3v-27H4v30Z" fill="#c2cbd0"/>
+    <path id="Path_6078" data-name="Path 6078" d="M21,20h8V30H21Z" fill="#f5f5f5"/>
+    <path id="Path_6079" data-name="Path 6079" d="M21,34h8V44H21Z" fill="#f5f5f5"/>
+    <path id="Path_6080" data-name="Path 6080" d="M14,48H25V58H14Z" fill="#e0e0e0"/>
+    <path id="Path_6081" data-name="Path 6081" d="M25,28H49V58H25Z" fill="#b3bec4"/>
+    <path id="Path_6082" data-name="Path 6082" d="M25,28V49H40a2,2,0,0,0,2-2V28Z" fill="#c2cbd0"/>
+    <path id="Path_6083" data-name="Path 6083" d="M56,53h2v5H56Z" fill="#74574a"/>
+    <path id="Path_6084" data-name="Path 6084" d="M2,58H62v4H2Z" fill="#94a4ad"/>
+    <g id="Group_14402" data-name="Group 14402">
+      <path id="Path_6085" data-name="Path 6085" d="M9,6h8V16H9Z" fill="#f5f5f5"/>
+      <path id="Path_6086" data-name="Path 6086" d="M21,6h8V16H21Z" fill="#f5f5f5"/>
+      <path id="Path_6087" data-name="Path 6087" d="M9,20h8V30H9Z" fill="#f5f5f5"/>
+      <path id="Path_6088" data-name="Path 6088" d="M9,34h8V44H9Z" fill="#f5f5f5"/>
+      <path id="Path_6089" data-name="Path 6089" d="M29,32h6v6H29Z" fill="#f5f5f5"/>
+      <path id="Path_6090" data-name="Path 6090" d="M39,32h6v6H39Z" fill="#f5f5f5"/>
+      <path id="Path_6091" data-name="Path 6091" d="M29,42h6v6H29Z" fill="#f5f5f5"/>
+      <path id="Path_6092" data-name="Path 6092" d="M39,42h6v6H39Z" fill="#f5f5f5"/>
+    </g>
+    <path id="Path_6093" data-name="Path 6093" d="M34,58V55a3,3,0,0,1,6,0v3Z" fill="#e0e0e0"/>
+    <ellipse id="Ellipse_22" data-name="Ellipse 22" cx="4" cy="5" rx="4" ry="5" transform="translate(53 44)" fill="#67ac5c"/>
+    <path id="Path_6094" data-name="Path 6094" d="M51,24a10.937,10.937,0,0,1-6.32-2.006L40,24l2.006-4.68A10.994,10.994,0,1,1,51,24Z" fill="#e0e0e0"/>
+    <path id="Path_6095" data-name="Path 6095" d="M51,2a10.986,10.986,0,0,0-9.789,16H54a3,3,0,0,0,3-3V3.787A10.945,10.945,0,0,0,51,2Z" fill="#f5f5f5"/>
+    <path id="Path_6096" data-name="Path 6096" d="M55.336,12.958a4.608,4.608,0,0,0-3.769-6.932C51.38,6.009,51.191,6,51,6s-.38.009-.567.026a4.608,4.608,0,0,0-3.769,6.932L51,20Z" fill="#2a6fdb"/>
+    <circle id="Ellipse_23" data-name="Ellipse 23" cx="2" cy="2" r="2" transform="translate(49 9)" fill="#f5f5f5"/>
+    <path id="Path_6097" data-name="Path 6097" d="M57,44c-2.209,0-4,2.239-4,5a6.072,6.072,0,0,0,.294,1.865A1.974,1.974,0,0,0,54,51h3a2,2,0,0,0,2-2V44.694A3.384,3.384,0,0,0,57,44Z" fill="#85bd7d"/>
+  </g>
+</svg>

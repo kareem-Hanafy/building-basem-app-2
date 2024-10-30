@@ -1,0 +1,90 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 16px 32px 32px;
+  margin: auto;
+  max-width: 768px;
+  height: 100%;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(4, 9, 32, 0.35),
+      rgba(4, 9, 32, 0.6)
+    ),
+    url("../../../assets/images/welcomeimg.png");
+  background-size: cover;
+  color: #fff;
+}
+
+.content {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  margin-top: 20%;
+
+  img {
+    display: block;
+    margin: auto;
+    // background-color: rgba(255, 255, 255, .35);
+    // border-radius: 10px;
+    // padding: 12px;
+    // margin-bottom: 12px;
+    // width: 80px;
+    // height: 80px;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-family: "bold";
+    line-height: 29px;
+    margin-block: 16px;
+  }
+
+  p {
+    line-height: 24px;
+    opacity: 80%;
+  }
+}
+
+ion-footer {
+  margin-top: 60%;
+
+  .sign-btns {
+    ion-button {
+      margin-top: 24px;
+      border-radius: 32px;
+      --border-radius: 32px;
+      height: 60px;
+      color: #fff;
+      font-family: "bold";
+      font-size: 17px;
+    }
+
+    ion-button:first-of-type {
+      border: 1px solid #fff;
+    }
+
+    p.guest {
+      color: #2a6fdb;
+      text-decoration: underline;
+      font-size: 17px;
+      margin-block: 24px;
+      text-align: center;
+      font-family: "bold";
+    }
+  }
+}
+img.guest {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+// .sign-btns {
+//   margin-top: auto;
+//   position: absolute;
+//   bottom: 0;
+//   width: auto;
+// }

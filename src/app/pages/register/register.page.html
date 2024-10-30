@@ -1,0 +1,63 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+
+    <div class="header_box animate__animated animate__fadeInBottomLeft duration">
+      <ion-button class="backBtn" fill="clear" (click)="back()">
+        <img src="../../../assets/images/back.svg" alt="">
+      </ion-button>
+      <h1>حساب جديد</h1>
+    </div>
+
+    <form [formGroup]="form">
+
+
+      <div class="item_box animate__animated animate__fadeInBottomLeft duration">
+        <p class="item_title">الإسم</p>
+        <ion-item class=" ">
+          <ion-input formControlName="fullName" type="text" placeholder="اسم المستخدم"></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="item_box animate__animated animate__fadeInBottomLeft duration">
+        <p class="item_title">نوع الحساب</p>
+        <!-- <ion-item> -->
+        <div class="userTypes">
+          <div *ngFor="let type of userTypes" class="selectionBox  animate__animated animate__fadeInBottomLeft duration"
+            [ngClass]="{'active': form.value.userType == type?._id }"
+            (click)="form.patchValue({ userType: type?._id })">
+            {{type.name}}
+          </div>
+        </div>
+        <!-- </ion-item> -->
+      </div>
+
+      <!-- <div class="item_box animate__animated animate__fadeInBottomLeft duration">
+
+        <p class="item_title">رقم الهاتف</p>
+        <ion-item>
+          <ion-input disabled="true" formControlName="phone" type="text" placeholder=""></ion-input>
+        </ion-item>
+      </div> -->
+
+      <div class="item_box animate__animated animate__fadeInBottomLeft duration">
+        <p class="item_title">كلمة المرور</p>
+        <ion-item>
+          <ion-input formControlName="password" type="text" placeholder="كلمة المرور"></ion-input>
+        </ion-item>
+
+      </div>
+
+      <div class="item_box animate__animated animate__fadeInBottomLeft duration">
+        <p class="item_title">تأكيد كلمة المرور</p>
+        <ion-item>
+          <ion-input formControlName="password_confirmation" type="text" placeholder="كلمة المرور"></ion-input>
+        </ion-item>
+      </div>
+      <ion-button mode="ios" class="submit animate__animated animate__fadeInBottomLeft duration" expand="block"
+        fill="solid" [disabled]="!form.valid" (click)="submit()">
+        انشاء حساب
+      </ion-button>
+    </form>
+
+  </div>
+</ion-content>

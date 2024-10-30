@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+
+    <div class="header_box animate__animated animate__fadeInBottomLeft duration">
+      <ion-button class="backBtn" fill="clear" (click)="back()">
+        <img src="../../../assets/images/back.svg" alt="">
+      </ion-button>
+      <h1>حساب جديد</h1>
+    </div>
+    <div class="myform">
+      <div class="animate__animated animate__fadeInBottomLeft duration">
+        <p>رقم الهاتف</p>
+        <div class="item_box">
+          <ion-input type="tel" [(ngModel)]="phone" placeholder="ادخل الهاتف">
+          </ion-input>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button mode="ios" class="submit animate__animated animate__fadeInBottomLeft duration" expand="block"
+      fill="solid" (click)="sendOtp()">
+      ارسال الكود
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

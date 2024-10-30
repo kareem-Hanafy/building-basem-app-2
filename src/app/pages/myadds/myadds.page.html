@@ -1,0 +1,271 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="back()">
+      <img src="../../assets/images/back.svg">
+    </ion-button>
+    <ion-searchbar class="animate__animated animate__fadeInLeft" style="padding-bottom: 0;" [hidden]="searchbarShow"
+      [(ngModel)]="searchQuery" mode="ios" placeholder="بحث بالاسم" type="text" (ionChange)="onSearchChange($event)"
+      (ionBlur)="searchbarShow=true" [debounce]="250"></ion-searchbar>
+    <ion-button slot="end" fill="clear" (click)="searchbarShow = !searchbarShow">
+      <img src="../../assets/images/search.png">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
+
+  <div class="container">
+    <h1 class="title_category animate__animated animate__fadeInUp duration">إعلاناتي</h1>
+    <p class="sub_title animate__animated animate__fadeInUp duration">456 شقة مختلفة</p>
+
+    <ion-segment mode="ios" color="primary" [(ngModel)]="adStatus">
+      <ion-segment-button value="">
+        <ion-label>الكل</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="63cfb3527fbccb084be60c1e">
+        <ion-label>فعال</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="63cfad757fbccb084be60734">
+        <ion-label>تم البيع</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="63cfad827fbccb084be60737">
+        <ion-label>موقف مؤقتا</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <div class="add_box_item animate__animated animate__fadeInUp duration">
+      <div class="head_box">
+
+        <span>{{"مميز"}}</span>
+
+        <img [defaultImage]="'../../../assets/images/buildplaceholder.png'"
+          [lazyLoad]="'../../../assets/images/img_card.png'" alt="">
+      </div>
+      <div class="body_content">
+        <div class="body_head">
+          <p>
+            <ion-icon slot="start" name="location"></ion-icon>
+            {{'egypt'}}
+          </p>
+          <p>{{3253425| date}}</p>
+        </div>
+        <div class="center_content">
+          <p class="body_title">
+            {{'شقة مفروشة بحي بغداد'}}
+          </p>
+          <div class="price">
+            {{56000 |number}} $
+          </div>
+        </div>
+        <div class="footer_content">
+          <p>
+            <img src="../../assets/images/size.svg" alt="">
+            {{400}}م
+          </p>
+          <p>
+            الواجهه
+            {{300}}م
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <!-- <div *ngFor="let build of building;let i = index;trackBy:trackFu"
+      class="add_box_item animate__animated animate__fadeInUp duration">
+      <div class="head_box">
+        <span style="top: 30px; background: var(--ion-color-primary);"
+          *ngIf="build.adType?._id !='63b978f98aca1c524a92466e'">{{build?.adType?.name}}</span>
+        <span>{{build?.adStatus?.name}}</span>
+        <ion-button fill="clear" (click)="optionsPopOver($event,build)">
+          <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
+        </ion-button>
+        <img [src]="build?.images[0] ?? '../../../assets/images/buildplaceholder.png'" alt="">
+      </div>
+      <div class="body_content" (click)="details(build)">
+        <div class="body_head">
+          <p>
+            <ion-icon slot="start" name="location"></ion-icon>
+            {{build?.address}}
+          </p>
+          <p>{{build?.createdAt| date}}</p>
+        </div>
+        <div class="center_content">
+          <p class="body_title">
+            {{build?.title}}
+          </p>
+          <div class="price">
+            {{build?.price |number}} د.ع
+          </div>
+        </div>
+        <div class="footer_content">
+          <p *ngIf="build?.area">
+            <img src="../../assets/images/size.svg" alt="">
+            {{build?.area}}م
+          </p>
+          <p *ngIf="build?.interface">
+            الواجهه
+            {{build?.interface}}م
+          </p>
+          <p *ngIf="build?.depth">
+            النزال
+            {{build?.depth}}م
+          </p>
+          <p *ngIf="build?.floorsNumber">
+            الطوابق
+            {{build?.floorsNumber}}
+          </p>
+          <p *ngIf="build?.bedsNumber">
+            <img src="../../assets/images/bed.svg" alt="">
+            {{build?.bedsNumber}}
+          </p>
+          <p *ngIf="build?.bathroomNumber">
+            <img src="../../assets/images/bath_room.svg" alt="">
+            {{build?.bathroomNumber}}
+          </p>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
+
+
+  <!-- error View && Loading  -->
+  <div *ngIf="loading" class="loading">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div *ngIf="emptyView" class="error-view">
+    <div class="content">
+      <ion-icon name="happy-outline"></ion-icon>
+      <ion-text color="medium">
+        <p>لا يوجد اعلانات حاليا</p>
+      </ion-text>
+    </div>
+  </div>
+
+  <div *ngIf="errorView" class="error-view">
+    <div class="content">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      <ion-text color="medium">
+        <p>خطأ بالشبكة يرجي المحاولة لاحقاً</p>
+      </ion-text>
+    </div>
+  </div>
+
+
+  <ion-fab *ngIf="!errorView" vertical="bottom" dir="rtl" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openFilterModal()" mode="ios">
+      <ion-icon name="options"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- <ion-infinite-scroll threshold="25%" [disabled]="disableInfinity" position="bottom" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+  <ion-modal #modal mode="ios" trigger="open-modal" [initialBreakpoint]="0.75"
+    [breakpoints]="[0, 0.25,0.35, 0.5, 0.75,1]">
+    <ng-template>
+      <ion-content>
+        <div class="headerModalFilter">
+          <h1 class="title_category animate__animated animate__fadeInUp duration">التصنيف</h1>
+          <ion-button (click)="clearFilter()" fill="clear" shape="round">
+            الغاء
+          </ion-button>
+        </div>
+        <div class="filter_body">
+          <p>المحافظة</p>
+          <div class="item_box">
+            <ion-select mode="ios" placeholder="الشقق" [(ngModel)]="city">
+              <ion-select-option *ngFor="let city of citys" [value]="city._id">{{city.name}}</ion-select-option>
+            </ion-select>
+          </div>
+
+          <!-- <p>الموقع /المدينة</p>
+          <div class="item_box">
+            <ion-select interface="popover" placeholder="الشقق">
+              <ion-select-option value="peperoni">Peperoni</ion-select-option>
+              <ion-select-option value="hawaii">Hawaii</ion-select-option>
+            </ion-select>
+          </div> -->
+          <p>نوع ملكيه السند</p>
+          <div class="item_box">
+            <ion-select mode="ios" placeholder="الشقق" [(ngModel)]="bondType">
+              <ion-select-option *ngFor="let type of bondTypes" [value]="type._id">{{type.name}}</ion-select-option>
+            </ion-select>
+          </div>
+
+
+          <p>جنس الاعلان</p>
+          <div class="item_box">
+            <ion-select mode="ios" placeholder="الشقق" [(ngModel)]="adGender">
+              <ion-select-option *ngFor="let type of adGenders" [value]="type._id">{{type.name}}</ion-select-option>
+            </ion-select>
+          </div>
+
+          <p>نوع الاعلان</p>
+          <div class="item_box">
+            <ion-select mode="ios" placeholder="الشقق" [(ngModel)]="adType">
+              <ion-select-option *ngFor="let type of adTypes" [value]="type._id">{{type.name}}</ion-select-option>
+            </ion-select>
+          </div>
+
+          <p>حالة العرض</p>
+          <div class="item_box">
+            <ion-select mode="ios" placeholder="الشقق" [(ngModel)]="adStatus">
+              <ion-select-option *ngFor="let type of adStatuss" [value]="type._id">{{type.name}}</ion-select-option>
+            </ion-select>
+          </div>
+          <!-- <p>عدد الغرف</p>
+          <div class="item_box">
+            <ion-input type="number" [(ngModel)]="roomsNumber" placeholder="ادخل العدد">
+            </ion-input>
+          </div>
+
+
+          <p>عدد الحمامات</p>
+          <div class="item_box">
+            <ion-input type="number" [(ngModel)]="bathroomNumber" placeholder="ادخل العدد">
+            </ion-input>
+          </div>
+
+
+          <p>سنة البناء</p>
+          <div class="item_box">
+            <ion-input type="number" [(ngModel)]="buildYear" placeholder="ادخل السنة">
+            </ion-input>
+          </div> -->
+
+          <ion-button expand="block" fill="solid" (click)="getBuilds();filterModal.dismiss()">
+            تصنيف
+          </ion-button>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-popover #popover [dismissOnSelect]="true" [isOpen]="isOpen" (didDismiss)="isOpen = false" mode="ios">
+    <ng-template>
+      <ion-content class="popOver">
+        <ion-list>
+          <ion-item button (click)="edit()">
+            <ion-label color="dark">تعديل</ion-label>
+          </ion-item>
+          <ion-item button *ngIf="selectedBuild?.adStatus?._id !='63cfb3527fbccb084be60c1e'"
+            (click)="updateStatus('63cfb3527fbccb084be60c1e')">
+            <ion-label color="dark">فعال</ion-label>
+          </ion-item>
+          <ion-item button *ngIf="selectedBuild?.adStatus?._id !='63cfad757fbccb084be60734'"
+            (click)="updateStatus('63cfad757fbccb084be60734')">
+            <ion-label color="dark">تم البيع</ion-label>
+          </ion-item>
+          <ion-item button *ngIf="selectedBuild?.adStatus?._id !='63cfad827fbccb084be60737'"
+            (click)="updateStatus('63cfad827fbccb084be60737')">
+            <ion-label color="dark">توقيف مؤقتا</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+</ion-content>

@@ -1,0 +1,110 @@
+<ion-content>
+  <div class="myheader">
+    <ion-button slot="start" fill="clear" (click)="back()">
+      <img src="../../assets/images/back.svg">
+    </ion-button>
+    <img class="background" src="../../../assets/images/img_card.png" alt="">
+  </div>
+
+  <div class="body_content">
+    <ion-avatar class="animate__animated animate__fadeInBottomLeft duration">
+      <img [lazyLoad]="userData?.image ||'../../../assets/images/userplaceholder.png'"
+        [errorImage]="'../../../assets/images/userplaceholder.png'" alt="">
+    </ion-avatar>
+    <div class="info animate__animated animate__fadeInBottomLeft duration">
+      <div class="part">
+        <h1>{{userData?.fullName || '. . . . . .'}}</h1>
+        <p>{{builds.length}} إعلان . عضو منذ {{userData?.createdAt| date}}</p>
+      </div>
+      <div class="part">
+        <ion-buttons>
+          <ion-button (click)="whatsapp()" shape="round" style="background: rgba(42, 111, 219, .25);">
+            <img src="../../../assets/images/msg.svg" alt="">
+          </ion-button>
+          <ion-button (click)="call()" shape="round" style="background: #008A63">
+            <img src="../../../assets/images/call.svg" alt="">
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+
+    <!-- <div class="container"> -->
+    <h1 class="title_category animate__animated animate__fadeInUp duration">الاعلانات</h1>
+    <ion-segment scrollable="true" mode="md" color="primary" [(ngModel)]="adGender"
+      (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="">
+        <ion-label>الكل</ion-label>
+      </ion-segment-button>
+      <ion-segment-button *ngFor="let gender of adGenders" [value]="gender?._id">
+        <ion-label>{{gender?.name}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <!-- <p class="sub_title animate__animated animate__fadeInUp duration">456 شقة مختلفة</p> -->
+    <div *ngFor="let build of builds;let i = index;" class="add_box_item animate__animated animate__fadeInUp duration"
+      (click)="details(build)">
+      <div class="head_box">
+        <span>{{build?.adType?.name}}</span>
+        <span style="top: 30px; background: var(--ion-color-primary);">{{build?.adGender?.name}}</span>
+        <div *ngIf="build.adStatus._id=='63b97b698aca1c524a924685'" class="stoped">
+          <p>تم البيع</p>
+        </div>
+        <div *ngIf="build.adStatus._id=='63b97b628aca1c524a924683'" class="stoped">
+          <p>موقف مؤقتاً</p>
+        </div>
+        <img [defaultImage]="'../../../assets/images/buildplaceholder.png'" [lazyLoad]="build?.images[0]" alt="">
+      </div>
+      <div class="body_content">
+        <div class="body_head">
+          <p>
+            <ion-icon slot="start" name="location"></ion-icon>
+            {{build?.address}}
+          </p>
+          <p>{{build?.createdAt| date}}</p>
+        </div>
+        <div class="center_content">
+          <p class="body_title">
+            {{build?.title}}
+          </p>
+          <div class="price">
+            {{build?.price |number}} د.ع
+          </div>
+        </div>
+        <div class="footer_content">
+          <p *ngIf="build?.area">
+            <img src="../../assets/images/size.svg" alt="">
+            {{build?.area}}م
+          </p>
+          <p *ngIf="build?.interface">
+            الواجهه
+            <!-- <img src="../../assets/images/size.svg" alt=""> -->
+            {{build?.interface}}م
+          </p>
+          <p *ngIf="build?.depth">
+            النزال
+            <!-- <img src="../../assets/images/size.svg" alt=""> -->
+            {{build?.depth}}م
+          </p>
+          <p *ngIf="build?.floorsNumber">
+            الطوابق
+            <!-- <img src="../../assets/images/size.svg" alt=""> -->
+            {{build?.floorsNumber}}
+          </p>
+          <p *ngIf="build?.bedsNumber">
+            <img src="../../assets/images/bed.svg" alt="">
+            {{build?.bedsNumber}}
+          </p>
+          <p *ngIf="build?.bathroomNumber">
+            <img src="../../assets/images/bath_room.svg" alt="">
+            {{build?.bathroomNumber}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+
+    <!-- <div class="list"> -->
+
+
+    <!-- </div> -->
+  </div>
+</ion-content>

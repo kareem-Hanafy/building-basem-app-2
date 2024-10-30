@@ -1,0 +1,128 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="back()">
+      <img src="../../assets/images/back.svg">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
+
+  <div class="container">
+    <h1 class="title_category animate__animated animate__fadeInUp duration">رغباتي</h1>
+    <p class="sub_title animate__animated animate__fadeInUp duration">456 شقة مختلفة</p>
+
+    <!-- 
+    <div class="wishlist" *ngFor="let wish of wishlists;let wishIndex =index">
+      <div class="body-wish">
+        <h3>{{wish?.title}}
+          <ion-text color="primary" slot="end" (click)="optionsPopOver($event,wish,wishIndex)">
+            <ion-icon name="ellipsis-horizontal-circle-outline"></ion-icon>
+          </ion-text>
+        </h3>
+        <div class="line" (click)="items(wish)">
+          <div class="start">عدد الاعلانات</div>
+          <div class="end">
+            <p>
+              {{wish?.count }}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div> -->
+
+    <div class="add_box_item animate__animated animate__fadeInUp duration">
+      <div class="head_box">
+
+        <span>{{"مميز"}}</span>
+
+        <img [defaultImage]="'../../../assets/images/buildplaceholder.png'"
+          [lazyLoad]="'../../../assets/images/img_card.png'" alt="">
+      </div>
+      <div class="body_content">
+        <div class="body_head">
+          <p>
+            <ion-icon slot="start" name="location"></ion-icon>
+            {{'egypt'}}
+          </p>
+          <p>{{3253425| date}}</p>
+        </div>
+        <div class="center_content">
+          <p class="body_title">
+            {{'شقة مفروشة بحي بغداد'}}
+          </p>
+          <div class="price">
+            {{56000 |number}} $
+          </div>
+        </div>
+        <div class="footer_content">
+          <p>
+            <img src="../../assets/images/size.svg" alt="">
+            {{400}}م
+          </p>
+          <p>
+            الواجهه
+            {{300}}م
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- error View && Loading  -->
+  <div *ngIf="loading" class="loading">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div *ngIf="emptyView" class="error-view">
+    <div class="content">
+      <ion-icon name="happy-outline"></ion-icon>
+      <ion-text color="medium">
+        <p>لا يوجد رغبات حاليا</p>
+      </ion-text>
+    </div>
+  </div>
+
+  <div *ngIf="errorView" class="error-view">
+    <div class="content">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      <ion-text color="medium">
+        <p>خطأ بالشبكة يرجي المحاولة لاحقاً</p>
+      </ion-text>
+    </div>
+  </div>
+
+
+  <!-- <ion-fab *ngIf="!errorView" vertical="bottom" dir="rtl" horizontal="end" slot="fixed">
+    <ion-fab-button mode="ios" (click)="addWishList()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-infinite-scroll threshold="25%" [disabled]="disableInfinity" position="bottom" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
+
+  <ion-popover #popover [dismissOnSelect]="true" [isOpen]="isOpen" (didDismiss)="isOpen = false" mode="ios">
+    <ng-template>
+      <ion-content class="popOver">
+        <ion-list>
+          <ion-item button (click)="deleteWish()">
+            <ion-label color="danger">حذف</ion-label>
+          </ion-item>
+          <ion-item button (click)="details()">
+            <ion-label color="primary">تفاصيل الرغبة</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+</ion-content>

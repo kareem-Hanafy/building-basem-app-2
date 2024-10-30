@@ -1,0 +1,84 @@
+<ion-content>
+  <div class="myheader">
+    <ion-button slot="start" fill="clear" (click)="back()">
+      <img src="../../assets/images/back.svg">
+    </ion-button>
+    <img class="background" src="../../../assets/images/img_card.png" alt="">
+  </div>
+
+  <div class="body_content">
+    <ion-avatar class="animate__animated animate__fadeInBottomLeft duration">
+      <img [lazyLoad]="userImage ||'../../../assets/images/userplaceholder.png'"
+        [errorImage]="'../../../assets/images/userplaceholder.png'" alt="">
+    </ion-avatar>
+    <div class="info animate__animated animate__fadeInBottomLeft duration">
+      <h1>{{userData?.fullName || '. . . . . .'}}</h1>
+      <p> عضو منذ {{userData?.createdAt| date}}</p>
+    </div>
+
+
+    <!-- <div class="list"> -->
+    <div class="item_box animate__animated animate__fadeInBottomLeft duration" (click)="navigate('me')">
+      <div class="image">
+        <img src="../../../assets/images/profile.svg" alt="">
+      </div>
+      <div class="name">
+        المعلومات الشخصية
+      </div>
+    </div>
+
+    <!-- <div class="item_box animate__animated animate__fadeInBottomLeft duration" (click)="navigate('qr-code')">
+      <div class="image">
+        <img src="../../../assets/images/profile.svg" alt="">
+      </div>
+      <div class="name">
+        كود الـ QR
+      </div>
+    </div> -->
+
+    <!-- <div class="item_box animate__animated animate__fadeInBottomLeft duration" (click)="navigate('myadds')">
+      <div class="image">
+        <img src="../../../assets/images/list-ads.svg" alt="">
+      </div>
+      <div class="name">
+        إعلاناتي
+      </div>
+    </div> -->
+
+    <!-- <div class="item_box animate__animated animate__fadeInBottomLeft duration" (click)="navigate('wishlist')">
+      <div class="image">
+        <img src="../../../assets/images/like-list.svg" alt="">
+      </div>
+      <div class="name">
+        رغباتي
+      </div>
+    </div> -->
+
+    <!-- <div class="item_box animate__animated animate__fadeInBottomLeft duration" (click)="navigate('notification')">
+      <div class="image">
+        <img src="../../../assets/images/list-ads.svg" alt="">
+      </div>
+      <div class="name">
+        الاشعارات
+      </div>
+    </div> -->
+
+    <div class="item_box animate__animated animate__fadeInBottomLeft duration">
+      <div class="image">
+        <img src="../../../assets/images/connect.svg" alt="">
+      </div>
+      <div class="name">
+        تواصل مع الدعم
+      </div>
+    </div>
+    <!-- <div class="item_box animate__animated animate__fadeInBottomLeft duration" (click)="logOut()">
+      <div class="image">
+        <img src="../../../assets/images/out.svg" alt="">
+      </div>
+      <div class="name">
+        تسجيل الخروج
+      </div>
+    </div> -->
+    <!-- </div> -->
+  </div>
+</ion-content>

@@ -1,0 +1,5 @@
+<svg id="edit" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path id="Path_6072" data-name="Path 6072" d="M0,0H24V24H0Z" fill="none"/>
+  <path id="Path_6073" data-name="Path 6073" d="M4,20H8L18.5,9.5a2.828,2.828,0,0,0-4-4L4,16v4" fill="none" stroke="#040920" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <line id="Line_25" data-name="Line 25" x2="4" y2="4" transform="translate(13.5 6.5)" fill="none" stroke="#040920" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+</svg>

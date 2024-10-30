@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+
+    <div class="content">
+      <img src="../../../assets/images/Logo.png" alt="">
+      <h3>تطبيق باسم الشمري</h3>
+      <p>تصفح كل من المنازل , الشقق , الأراضي..إلخ المجاورة لك بسرعة وبسهولة</p>
+    </div>
+    <ion-footer>
+      <div class="sign-btns">
+        <!-- <ion-button expand="block" fill="clear" (click)="navigate('login')">
+          تسجيل الدخول
+        </ion-button>
+        <ion-button expand="block" fill="solid" (click)="navigate('otp')">
+          حساب جديد
+        </ion-button>
+        <p class="guest" (click)="loginAsVisitor()">
+          الدخول كزائر
+        </p> -->
+        <img (click)="loginAsVisitor()" class="guest" src="../../../assets/images/Group 14405.svg" alt="">
+
+      </div>
+
+    </ion-footer>
+  </div>
+</ion-content>

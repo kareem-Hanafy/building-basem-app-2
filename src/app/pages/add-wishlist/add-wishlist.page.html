@@ -1,0 +1,70 @@
+<ion-header class="add">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="../../../assets/images/back.svg"></ion-back-button>
+    </ion-buttons>
+    <ion-title slot="start">{{editeWishlist?'تعديل':"اضافة"}} رغبة</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <form [formGroup]="form" class="addForm">
+
+      <div class="animate__animated animate__fadeInBottomLeft duration">
+        <p>اسم / العنوان الرئيسي</p>
+        <div class="item_box">
+          <ion-input formControlName="title" placeholder="ادخل العنوان">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="animate__animated animate__fadeInBottomLeft duration">
+        <p>نوع الاعلان</p>
+        <div class="item_box">
+          <ion-select [compareWith]="adGender" multiple="true" mode="ios" placeholder="الشقق"
+            formControlName="adGender">
+            <ion-select-option *ngFor="let type of adGender" [value]="type._id">{{type.name}}</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <div class="animate__animated animate__fadeInBottomLeft duration">
+        <p>نوع العقار</p>
+        <div class="item_box">
+          <ion-select [compareWith]="buildTypes" multiple="true" mode="ios" placeholder="الشقق"
+            formControlName="buildType">
+            <ion-select-option *ngFor="let type of buildTypes" [value]="type._id">{{type.name}}</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <div class="animate__animated animate__fadeInBottomLeft duration">
+        <p>نوع ملكيه السند</p>
+        <div class="item_box">
+          <ion-select [compareWith]="bondTypes" multiple="true" mode="ios" placeholder="الشقق"
+            formControlName="bondType">
+            <ion-select-option *ngFor="let type of bondTypes" [value]="type._id">{{type.name}}</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <div class="animate__animated animate__fadeInBottomLeft duration">
+        <p>المحافظة</p>
+        <div class="item_box">
+          <ion-select [compareWith]="citys" multiple="true" mode="ios" placeholder="الشقق" formControlName="city">
+            <ion-select-option *ngFor="let city of citys" [value]="city._id">{{city.name}}</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer mode="ios">
+  <ion-toolbar>
+    <ion-button (click)="submit()" expand="block" fill="solid">
+      التالي
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

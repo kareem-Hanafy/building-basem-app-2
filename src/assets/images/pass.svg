@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+  <g id="pass" transform="translate(-299 -309)">
+    <path id="Rectangle_4383" data-name="Rectangle 4383" d="M0,0H36a8,8,0,0,1,8,8V36a8,8,0,0,1-8,8H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" transform="translate(299 309)" fill="#87899e" opacity="0"/>
+    <g id="pass-2" data-name="pass" transform="translate(309 319)">
+      <path id="Path_6058" data-name="Path 6058" d="M0,0H24V24H0Z" fill="none"/>
+      <path id="Rectangle_4386" data-name="Rectangle 4386" d="M2-.75H12A2.753,2.753,0,0,1,14.75,2V8A2.753,2.753,0,0,1,12,10.75H2A2.753,2.753,0,0,1-.75,8V2A2.753,2.753,0,0,1,2-.75Zm10,10A1.251,1.251,0,0,0,13.25,8V2A1.251,1.251,0,0,0,12,.75H2A1.251,1.251,0,0,0,.75,2V8A1.251,1.251,0,0,0,2,9.25Z" transform="translate(5 11)" fill="#87899e"/>
+      <path id="Path_6059" data-name="Path 6059" d="M16,11.75a.75.75,0,0,1-.75-.75V7a3.25,3.25,0,0,0-6.5,0v4a.75.75,0,0,1-1.5,0V7a4.75,4.75,0,0,1,9.5,0v4A.75.75,0,0,1,16,11.75Z" fill="#87899e"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,66 @@
+ion-content {
+  --background: #F8F9FB;
+}
+
+.container {
+  padding: 0px 16px 32px;
+  margin: auto;
+  max-width: 1024px;
+}
+
+.title_category {
+  margin-block: 0 12px;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--dark-text);
+  font-family: 'bold';
+}
+
+.wishlist {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  margin-top: 16px;
+  box-shadow: 0px 6px 12px #ececec;
+
+  .body-wish {
+
+    * {
+      color: #12364C;
+    }
+
+    h3 {
+      padding-inline-start: 12px;
+      color: var(--dark-text);
+      font-family: 'bold';
+      margin: 10px 0px 0;
+      display: flex;
+      margin-inline-end: 12px;
+
+      ion-text {
+        margin-inline-start: auto;
+      }
+    }
+
+    .line {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+
+      .end {
+        font-family: 'bold';
+
+        p {
+          text-align: end;
+          margin-block: 0 6px;
+        }
+      }
+    }
+
+    .line:not(:last-of-type) {
+      border-bottom: 1px solid #eee;
+
+    }
+  }
+
+}

@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+
+    <div class="header_box animate__animated animate__fadeInBottomLeft duration">
+      <ion-button class="backBtn" fill="clear" (click)="back()">
+        <img src="../../../assets/images/back.svg" alt="">
+      </ion-button>
+      <h1>رمز التأكيد</h1>
+
+      <p>ادخل رمز التأكيد المرسل لرقمك
+        <span>{{phone}}</span></p>
+      <ion-button color="primary" (click)="back()" fill="outline" shape="round">
+        تغيير الرقم
+      </ion-button>
+    </div>
+    <div class="myform">
+      <div class="animate__animated animate__fadeInBottomLeft duration">
+        <ng-otp-input style="direction: ltr" (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+
+      </div>
+    </div>
+
+
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button mode="ios" class="submit animate__animated animate__fadeInBottomLeft duration" expand="block"
+      fill="solid" (click)="sendCode()">
+      ارسال الكود
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

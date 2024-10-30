@@ -1,0 +1,53 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="back()">
+      <img src="../../assets/images/back.svg">
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <h1 class="title_category animate__animated animate__fadeInUp duration">{{wish?.title}}</h1>
+
+    <div class="wishlist">
+      <div class="body-wish">
+        <div class="line">
+          <div class="start">نوع البناء</div>
+          <div class="end">
+            <p *ngFor="let type of wish?.buildType">
+              {{type.name }}
+            </p>
+          </div>
+        </div>
+        <div class="line">
+          <div class="start">نوع السند</div>
+          <div class="end">
+            <p *ngFor="let type of wish?.bondType;let i =index">
+              {{ type.name}}
+            </p>
+          </div>
+        </div>
+        <div class="line">
+          <div class="start">المحافظة</div>
+          <div class="end">
+            <p *ngFor="let c of wish?.city">
+              {{c.name}}
+            </p>
+          </div>
+        </div>
+        <div class="line">
+          <div class="start">جنس الاعلان</div>
+          <div class="end">
+            <p *ngFor="let type of wish?.adGender;let i =index">
+              {{ type.name}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</ion-content>

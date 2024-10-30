@@ -1,9 +1,21 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'building-basem-app-2',
-  webDir: 'www'
+  appId: 'com.buildingBasem.app',
+  appName: 'باسم الشمري',
+  webDir: 'www',
+  server: {
+    cleartext: true,
+    allowNavigation: ['*'],
+  },
+  plugins: {
+    PushNotifications: {
+      presentationOptions: ['badge', 'sound', 'alert'],
+    },
+    CapacitorFirebaseDynamicLinks: {
+      webClientId: 'AIzaSyAtrzsFKs5my3BEsaHWoXVetSOM2Za6XEg',
+    },
+  },
 };
 
 export default config;

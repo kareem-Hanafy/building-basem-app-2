@@ -1,0 +1,83 @@
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <div *ngIf="step ==1" class="step1">
+
+      <div class="header_box animate__animated animate__fadeInBottomLeft duration">
+        <ion-button class="backBtn" fill="clear" (click)="back()">
+          <img src="../../../assets/images/back.svg" alt="">
+        </ion-button>
+        <h1>تغيير كلمة المرور</h1>
+      </div>
+
+      <div class="myform">
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>رقم الهاتف</p>
+          <div class="item_box">
+            <ion-input type="tel" [(ngModel)]="phone" placeholder="ادخل الهاتف">
+            </ion-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step2" *ngIf="step==2">
+      <div class="header_box animate__animated animate__fadeInBottomLeft duration">
+        <ion-button class="backBtn" fill="clear" (click)="back()">
+          <img src="../../../assets/images/back.svg" alt="">
+        </ion-button>
+        <h1>رمز التأكيد</h1>
+
+        <p>ادخل رمز التأكيد المرسل لرقمك
+          <span>{{phone}}</span></p>
+        <ion-button color="primary" (click)="step=1" fill="outline" shape="round">
+          تغيير الرقم
+        </ion-button>
+      </div>
+      <div class="myform">
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <ng-otp-input style="direction: ltr" (onInputChange)="onOtpChange($event)" [config]="config"></ng-otp-input>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="step ==3" class="step1">
+
+      <div class="header_box animate__animated animate__fadeInBottomLeft duration">
+        <ion-button class="backBtn" fill="clear" (click)="back()">
+          <img src="../../../assets/images/back.svg" alt="">
+        </ion-button>
+        <h1>كلمة المرور الجديدة</h1>
+      </div>
+
+      <div class="myform">
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>كلمة المرور</p>
+          <div class="item_box">
+            <ion-input type="tel" [(ngModel)]="newPass" placeholder="ادخل كلمة المرور">
+            </ion-input>
+          </div>
+        </div>
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>تأكيد كلمة المرور</p>
+          <div class="item_box">
+            <ion-input type="tel" [(ngModel)]="newPassConfirm" placeholder="تأكيد كلمة المرور">
+            </ion-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button mode="ios" class="submit animate__animated animate__fadeInBottomLeft duration" expand="block"
+      fill="solid" (click)="submit()">
+      {{step ==1? 'ارسال الكود':'تأكيد'}}
+      <!-- {{step ==2? '':''}} -->
+
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

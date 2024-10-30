@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="like-list" transform="translate(-130 -547)">
+    <g id="Group_5721" data-name="Group 5721" transform="translate(130 547)">
+      <path id="Path_6061" data-name="Path 6061" d="M0,0H32V32H0Z" fill="none"/>
+      <path id="Path_6062" data-name="Path 6062" d="M25,16.433l-10,9.9-10-9.9m0,0A6.667,6.667,0,1,1,15,7.679a6.667,6.667,0,1,1,10,8.763" transform="translate(0.996 1.663)" fill="none" stroke="#2a6fdb" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

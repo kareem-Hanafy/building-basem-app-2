@@ -1,0 +1,253 @@
+<ion-header class="add">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="../../../assets/images/back.svg"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{editedBuild?'تعديل':"اضافة"}} اعلان</ion-title>
+    <p slot="end" dir="ltr">
+      {{step +" /"+'3' }}
+    </p>
+  </ion-toolbar>
+</ion-header>
+<ion-progress-bar reversed="true" color="primary" [value]="step/3"></ion-progress-bar>
+<ion-content>
+
+  <swiper-container *ngIf="step==1" dir="rtl" [slidesPerView]="1" [spaceBetween]="10" autoplay="false" [loop]="false"
+    direction="horizontal" [pagination]="{clickable:true,dynamicBullets:true,type:'fraction'}">
+    <swiper-slide *ngFor="let img of imagesFromDevice;let i =index" swiperSlide>
+      <img class="deleteBtn" src="../../../assets/images/delete_button.svg" alt=""
+        (click)="deleteImage(img,i,'device')">
+      <img class="myImg" [src]="img.data" alt="">
+    </swiper-slide>
+    <swiper-slide *ngFor="let img of imagesToSubmit;let i =index" swiperSlide>
+      <img class="deleteBtn" src="../../../assets/images/delete_button.svg" alt=""
+        (click)="deleteImage(img,i,'device')">
+      <img class="myImg" [src]="img" alt="">
+    </swiper-slide>
+    <swiper-slide swiperSlide>
+      <img (click)="selectImage()" src="../../../assets/images/add-img.svg" class="select-img" alt="">
+    </swiper-slide>
+  </swiper-container>
+  <!-- <swiper *ngIf="step==1" #mySlide dir="rtl" [pagination]="{
+    type: 'fraction'
+  }" [navigation]="false" class="mySwiper addSlide">
+    <ng-template *ngFor="let img of imagesFromDevice;let i =index" swiperSlide>
+      <img class="deleteBtn" src="../../../assets/images/delete_button.svg" alt=""
+        (click)="deleteImage(img,i,'device')">
+      <img class="myImg" [src]="img.data" alt="">
+    </ng-template>
+    <ng-template *ngFor="let img of imagesToSubmit;let i =index" swiperSlide>
+      <img class="deleteBtn" src="../../../assets/images/delete_button.svg" alt=""
+        (click)="deleteImage(img,i,'submit')">
+      <img class="myImg" [src]="img" alt="">
+    </ng-template>
+    <ng-template swiperSlide>
+      <img (click)="selectImage()" src="../../../assets/images/add-img.svg" alt="">
+    </ng-template>
+  </swiper> -->
+  <div class="container">
+    <form [formGroup]="form" class="addForm">
+
+      <div *ngIf="step==1" class="step_1">
+
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>نوع الاعلان</p>
+          <div class="item_box">
+            <ion-select [compareWith]="adGender" mode="ios" placeholder="الشقق" formControlName="adGender">
+              <ion-select-option *ngFor="let type of adGender" [value]="type._id">{{type.name}}</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>اسم / العنوان الرئيسي</p>
+          <div class="item_box">
+            <ion-input formControlName="title" placeholder="ادخل العنوان">
+            </ion-input>
+          </div>
+        </div>
+
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>المحافظة</p>
+          <div class="item_box">
+            <ion-select [compareWith]="citys" mode="ios" placeholder="الشقق" formControlName="city">
+              <ion-select-option *ngFor="let city of citys" [value]="city._id">{{city.name}}</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>نوع العقار</p>
+          <div class="item_box">
+            <ion-select [compareWith]="buildTypes" mode="ios" placeholder="الشقق" formControlName="buildType">
+              <ion-select-option *ngFor="let type of buildTypes" [value]="type._id">{{type.name}}</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>الموقع بالخريطة</p>
+          <div class="item_box">
+            <ion-button fill="clear" (click)="openMap()" expand="block" color="dark">
+              حدد الموقع بالخريطة
+            </ion-button>
+          </div>
+        </div>
+
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>السعر</p>
+          <div class="item_box">
+            <ion-input type="number" formControlName="price" placeholder="ادخل السعر">
+            </ion-input>
+          </div>
+        </div>
+
+      </div>
+
+      <div *ngIf="step==2" class="step_2">
+        <h1>المواصفات</h1>
+
+        <div class="items_multiBox">
+          <div class="animate__animated animate__fadeInBottomLeft duration">
+            <p>المساحة</p>
+            <div class="item_box">
+              <ion-input type="number" formControlName="area" placeholder="المساحة">
+              </ion-input>
+            </div>
+          </div>
+          <div class="animate__animated animate__fadeInBottomLeft duration">
+            <p>الواجهه</p>
+            <div class="item_box">
+              <ion-input type="number" formControlName="interface" placeholder="الواجهه">
+              </ion-input>
+            </div>
+          </div>
+          <div class="animate__animated animate__fadeInBottomLeft duration">
+            <p>النزال</p>
+            <div class="item_box">
+              <ion-input type="number" formControlName="depth" placeholder="النزال">
+              </ion-input>
+            </div>
+          </div>
+        </div>
+        <div class="items_multiBox">
+          <div class="animate__animated animate__fadeInBottomLeft duration">
+            <p>عدد الغرف</p>
+            <div class="item_box">
+              <ion-input type="number" formControlName="roomsNumber" placeholder="ادخل العدد">
+              </ion-input>
+            </div>
+          </div>
+
+          <div class="animate__animated animate__fadeInBottomLeft duration">
+            <p>عدد الحمامات</p>
+            <div class="item_box">
+              <ion-input type="number" formControlName="bathroomNumber" placeholder="ادخل العدد">
+              </ion-input>
+            </div>
+          </div>
+          <div class="animate__animated animate__fadeInBottomLeft duration">
+            <p>سنة البناء</p>
+            <div class="item_box">
+              <ion-input type="number" formControlName="buildYear" placeholder="ادخل السنة">
+              </ion-input>
+            </div>
+          </div>
+
+        </div>
+        <div class="items_multiBox">
+          <div style="flex-basis: 100%;" class="animate__animated animate__fadeInBottomLeft duration">
+            <p>العنوان</p>
+            <div class="item_box">
+              <ion-input formControlName="address" placeholder="ادخل العنوان">
+              </ion-input>
+            </div>
+          </div>
+
+          <div class="animate__animated animate__fadeInBottomLeft duration">
+            <p>عدد الطوابق</p>
+            <div class="item_box">
+              <ion-input type="number" formControlName="floorsNumber" placeholder="عدد الطوابق">
+              </ion-input>
+            </div>
+          </div>
+        </div>
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>الوصف</p>
+          <div style="height: auto;" class="item_box">
+            <ion-textarea rows="5" autoGrow="true" type="text" formControlName="description" placeholder="ادخل العدد">
+            </ion-textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <div *ngIf="step==3" class="step_3">
+        <h1>المواصفات</h1>
+
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>نوع ملكيه السند</p>
+          <div class="item_box">
+            <ion-select [compareWith]="bondTypes" mode="ios" placeholder="الشقق" formControlName="bondType">
+              <ion-select-option *ngFor="let type of bondTypes" [value]="type._id">{{type.name}}</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+
+
+        <!-- <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>فئة الاعلان</p>
+          <div class="item_box">
+            <ion-select [compareWith]="adTypes" mode="ios" placeholder="الشقق" formControlName="adType">
+              <ion-select-option *ngFor="let type of adTypes" [value]="type._id">{{type.name}}</ion-select-option>
+            </ion-select>
+          </div>
+        </div> -->
+
+        <!-- <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>حالة العرض</p>
+          <div class="item_box">
+            <ion-select [compareWith]="adStatus" mode="ios" placeholder="الشقق" formControlName="adStatus">
+              <ion-select-option *ngFor="let type of adStatus" [value]="type._id">{{type.name}}</ion-select-option>
+            </ion-select>
+          </div>
+        </div> -->
+
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>رقم الهاتف</p>
+          <div class="item_box">
+            <ion-input type="tel" formControlName="phoneCall" placeholder="ادخل الهاتف">
+            </ion-input>
+          </div>
+        </div>
+
+        <div class="animate__animated animate__fadeInBottomLeft duration">
+          <p>رقم الوتساب</p>
+          <div class="item_box">
+            <ion-input type="tel" formControlName="whatsapp" placeholder="ادخل الهاتف">
+            </ion-input>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+</ion-content>
+
+<ion-footer mode="ios">
+  <ion-toolbar>
+    <ion-button *ngIf="step==1" (click)="step=2" expand="block" fill="solid">
+      التالي
+    </ion-button>
+    <ion-buttons class="options" *ngIf="step!=1">
+      <ion-button (click)="step==2 ?step=1:step=2" color="dark">
+        الرجوع
+      </ion-button>
+      <ion-button (click)="step==2 ?step=3:submit()" fill="solid" color="primary">
+        {{step==2? "التالي":"نشر"}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

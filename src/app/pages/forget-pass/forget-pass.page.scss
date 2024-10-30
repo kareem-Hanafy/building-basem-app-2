@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+.container {
+  padding: 16px 24px 32px;
+  margin: auto;
+  max-width: 768px;
+  height: 100%;
+  background-image: url('../../../assets/images/loginimg.png');
+  background-size: cover;
+
+}
+
+
+.header_box {
+  h1 {
+    color: var(--dark-text);
+    font-size: 32px;
+    font-family: 'bold';
+    margin-block: 24px;
+  }
+
+  p {
+    color: #87899E;
+
+    span {
+      color: var(--dark-text);
+      font-family: 'bold';
+    }
+  }
+
+  ion-button {
+    margin-block: 16px;
+  }
+}
+
+.myform {
+  p {
+    color: var(--dark-text);
+    font-family: 'bold';
+    // margin-top: 0;
+    margin-block: 14px;
+
+  }
+
+  .item_box {
+    border: 1px solid #87899E;
+    border-radius: 28px;
+    margin-bottom: 24px;
+    height: 48px;
+    line-height: 24px;
+    // width: 80%;
+    // margin-inline: 16px;
+
+    ion-select {
+      --placeholder-color: var(--light-text);
+      --placeholder-opacity: 100%;
+    }
+
+
+  }
+}
+
+ion-button.submit {
+  margin: 24px;
+  border-radius: 28px;
+  --border-radius: 28px;
+  height: 56px;
+  color: #fff;
+  font-family: 'bold';
+  font-size: 17px;
+  background: var(--ion-color-primary);
+}
