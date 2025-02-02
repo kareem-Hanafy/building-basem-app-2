@@ -1,4 +1,4 @@
-package com.buildingBasem.app;
+package com.basemShamry.app;
 
 import com.getcapacitor.BridgeActivity;
 
