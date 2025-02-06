@@ -3,7 +3,6 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round" android:supportsRtl="true" android:theme="@style/AppTheme">
-
     <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode" android:name=".MainActivity" android:label="@string/title_activity_main" android:theme="@style/AppTheme.NoActionBarLaunch" android:launchMode="singleTask" android:exported="true">
 
       <intent-filter>
@@ -16,6 +15,10 @@
     <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
     </provider>
+
+    <!--meta data for maps  -->
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBk-jjPezVAZOH6uOXn267Q70Oc3xL3hRk"></meta-data>
+
   </application>
 
   <!-- Permissions -->
