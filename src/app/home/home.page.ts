@@ -3,12 +3,10 @@ import { AuthService } from './../services/auth/auth.service';
 import { DataService } from './../services/data/data.service';
 import { HelpersService } from 'src/app/services/helpers/helpers.service';
 import { IonModal, IonPopover, NavController } from '@ionic/angular';
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-// import { SwiperComponent } from 'swiper/angular';
-// import SwiperCore, { Navigation, Pagination } from 'swiper';
+import { Component, OnInit, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { Browser } from '@capacitor/browser';
-// SwiperCore.use([Navigation, Pagination]);
+import { register } from 'swiper/element/bundle';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +14,7 @@ import { Browser } from '@capacitor/browser';
   styleUrls: ['home.page.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, AfterViewInit {
   @ViewChild('modal') filterModal: IonModal;
   userImage: string = '';
   @ViewChild('popover') popover: IonPopover;
@@ -52,7 +50,9 @@ export class HomePage implements OnInit {
     private dataService: DataService,
     private authService: AuthService,
     private locationService: LocationService
-  ) { }
+  ) {
+    register();
+  }
 
   ngOnInit() { }
 
@@ -65,6 +65,32 @@ export class HomePage implements OnInit {
     this.getAddOption();
     if (!this.locationService.currentLocation)
       this.locationService.getCurrentLocation();
+  }
+
+  ngAfterViewInit() {
+    // Configure Swiper after view initialization
+    setTimeout(() => {
+      const swiperEl = document.querySelector('swiper-container.homeSlider') as any;
+      if (swiperEl) {
+        Object.assign(swiperEl, {
+          breakpoints: {
+            640: {
+              slidesPerView: 2.5,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 3.2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 4.2,
+              spaceBetween: 50,
+            },
+          },
+        });
+        swiperEl.initialize();
+      }
+    }, 100);
   }
   getTypes() {
     this.dataService.getData('/buildType').subscribe((res: any) => {

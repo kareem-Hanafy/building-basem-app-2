@@ -162,12 +162,14 @@ h1 {
   }
 }
 
-.swiper.homeSlider {
+.swiper.homeSlider,
+swiper-container.homeSlider {
   height: 280px;
   margin-inline-start: 10px;
   margin-top: 18px;
 
-  .swiper-slide {
+  .swiper-slide,
+  swiper-slide {
     background: #fff;
     height: 250px;
     /* Center slide text vertically */
@@ -186,6 +188,7 @@ h1 {
   }
 }
 
+swiper-slide,
 .swiper-slide,
 .add_box_item {
   border-radius: 12px;
@@ -335,4 +338,54 @@ ion-modal {
   --border-radius: 14px;
   box-shadow: 0px 4px 10px var(--ion-color-primary);
   margin: 10px;
+}
+
+// Additional styles for Swiper web components
+swiper-container {
+  width: 100%;
+  
+  &.homeSlider {
+    height: 280px;
+    margin-inline-start: 10px;
+    margin-top: 18px;
+    
+    swiper-slide {
+      background: #fff;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: start;
+      box-shadow: 0px 8px 12px #87899e26;
+      position: relative;
+    }
+  }
+}
+
+// Responsive breakpoints for mobile
+@media (min-width: 640px) {
+  swiper-container.homeSlider {
+    swiper-slide {
+      width: calc(40% - 20px) !important;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  swiper-container.homeSlider {
+    swiper-slide {
+      width: calc(31.25% - 40px) !important;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  swiper-container.homeSlider {
+    swiper-slide {
+      width: calc(23.8% - 50px) !important;
+    }
+  }
 }
