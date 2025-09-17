@@ -175,7 +175,7 @@
         <div class="animate__animated animate__fadeInBottomLeft duration">
           <p>الوصف</p>
           <div style="height: auto;" class="item_box">
-            <ion-textarea rows="5" autoGrow="true" type="text" formControlName="description" placeholder="ادخل العدد">
+            <ion-textarea rows="5" autoGrow="true" type="text" formControlName="description" placeholder="ادخل الوصف">
             </ion-textarea>
           </div>
         </div>
@@ -238,7 +238,7 @@
 
 <ion-footer mode="ios">
   <ion-toolbar>
-    <ion-button *ngIf="step==1" (click)="step=2" expand="block" fill="solid">
+    <ion-button *ngIf="step==1" (click)="goToNextFromStep1()" expand="block" fill="solid">
       التالي
     </ion-button>
     <ion-buttons class="options" *ngIf="step!=1">

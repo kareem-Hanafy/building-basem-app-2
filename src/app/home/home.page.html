@@ -27,7 +27,9 @@
       <img slot="start" src="../../assets/images/search.svg">
       <ion-input [(ngModel)]="searchQuery" (ionChange)="onSearchChange($event)" type="search" name="search" id=""
         placeholder="المدينة , الحي أو الشارع"></ion-input>
-      <ion-button class="filter" fill="outline" shape="round" (click)="filter()">
+      <ion-button class="filter" fill="outline"
+        style="width: 70px;--height: 40px; --border-radius: 16px;padding: 0px; font-size: 13px; font-weight: 600;"
+        (click)="filter()">
         فلتر
       </ion-button>
       <!-- <img slot="end" class="filter" src="../../assets/images/filter_.png" alt="" (click)=""> -->
@@ -53,6 +55,7 @@
     <swiper-container *ngIf="offersBuilding.length" dir="rtl" slides-per-view="1.33" space-between="20" free-mode="true"
       class="mySwiper homeSlider animate__animated animate__fadeInLeft duration">
       <swiper-slide *ngFor="let build of offersBuilding" class="animate__animated animate__fadeInLeft duration">
+
         <div class="head_box" (click)="detailsBuild(build)">
           <span *ngIf="build?.adType?._id !='63b978f98aca1c524a92466e'"
             style="top: 30px; background: var(--ion-color-primary);">{{build?.adType?.name}}</span>
@@ -116,6 +119,7 @@
             </p>
           </div>
         </div>
+
       </swiper-slide>
     </swiper-container>
   </div>

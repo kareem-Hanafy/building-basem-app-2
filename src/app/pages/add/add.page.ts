@@ -46,7 +46,7 @@ export class AddPage implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.getTypes()
+    this.getTypes()
   }
 
   ionViewWillEnter() {
@@ -97,7 +97,7 @@ export class AddPage implements OnInit, OnDestroy {
     this.form = this.formBuilder.group({
       title: ['', Validators.required],
       address: [''],
-      price: [''],
+      price: ['', Validators.required],
       area: [''],
       roomsNumber: [''],
       bedsNumber: [''],
@@ -112,9 +112,9 @@ export class AddPage implements OnInit, OnDestroy {
       depth: [''],
       // adType: [''],
       // adStatus: [''],
-      adGender: [''],
+      adGender: ['', Validators.required],
       buildType: ['', Validators.required],
-      city: [''],
+      city: ['', Validators.required],
     });
   }
 
@@ -141,32 +141,32 @@ export class AddPage implements OnInit, OnDestroy {
   }
 
   async submit() {
-    // this.helper.showLoading('جاري نشر الاعلان');
-    // let uploadedImages = this.imagesFromDevice.length
-    //   ? await this.cameraService.uploadImages(this.imagesFromDevice)
-    //   : [];
-    // this.imagesToSubmit = this.imagesToSubmit.concat(uploadedImages);
-    // let location = this.location;
-    // if (!this.editedBuild && !location)
-    //   return (
-    //     this.helper.presentToast('يجب تحديد موقع العقار'),
-    //     this.helper.dismissLoading()
-    //   );
-    // let body = {
-    //   images: this.imagesToSubmit,
-    //   ...this.form.value,
-    //   user: this.authService.userData?._id,
-    // };
+    this.helper.showLoading('جاري نشر الاعلان');
+    let uploadedImages = this.imagesFromDevice.length
+      ? await this.cameraService.uploadImages(this.imagesFromDevice)
+      : [];
+    this.imagesToSubmit = this.imagesToSubmit.concat(uploadedImages);
+    let location = this.location;
+    if (!this.editedBuild && !location)
+      return (
+        this.helper.presentToast('يجب تحديد موقع العقار'),
+        this.helper.dismissLoading()
+      );
+    let body = {
+      images: this.imagesToSubmit,
+      ...this.form.value,
+      user: this.authService.userData?._id,
+    };
 
-    // if (this.location)
-    //   body['location'] = { coordinates: [location.lng, location.lat] };
-    // if (this.editedBuild) {
-    //   this.updateBuild(body);
-    // } else {
-    //   this.addBuild(body);
-    // }
-    this.navCtrl.navigateRoot('/home');
-    this.helper.presentToast('تم اضافة الاعلان بنجاح');
+    if (this.location)
+      body['location'] = { coordinates: [location.lng, location.lat] };
+    if (this.editedBuild) {
+      this.updateBuild(body);
+    } else {
+      this.addBuild(body);
+    }
+    // this.navCtrl.navigateRoot('/home');
+    // this.helper.presentToast('تم اضافة الاعلان بنجاح');
   }
   updateBuild(body: any) {
     this.dataService
@@ -208,6 +208,23 @@ export class AddPage implements OnInit, OnDestroy {
   //########   Map Modal
   async openMap() {
     this.navCtrl.navigateForward('/map');
+  }
+
+  // Validate step 1 required fields before moving forward
+  goToNextFromStep1() {
+    const firstStepControls = ['adGender', 'title', 'city', 'buildType', 'price'];
+    firstStepControls.forEach((name) => this.form.get(name)?.markAsTouched());
+
+    const controlsValid = firstStepControls.every((name) => this.form.get(name)?.valid);
+    const hasLocation = !!this.location;
+
+    if (!controlsValid || !hasLocation) {
+      let message = 'الرجاء تعبئة كل الحقول المطلوبة في الخطوة الأولى';
+      if (!hasLocation) message += ' وتحديد الموقع بالخريطة';
+      this.helper.presentToast(message);
+      return;
+    }
+    this.step = 2;
   }
 
   async deleteImage(img: any, index: number, type: string) {
