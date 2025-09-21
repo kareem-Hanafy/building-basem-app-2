@@ -54,7 +54,8 @@ export class HomePage implements OnInit, AfterViewInit {
     register();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   ionViewWillEnter() {
     this.userImage = this.authService.userData?.image;
@@ -66,6 +67,7 @@ export class HomePage implements OnInit, AfterViewInit {
     if (!this.locationService.currentLocation)
       this.locationService.getCurrentLocation();
   }
+
 
   ngAfterViewInit() {
     // Configure Swiper after view initialization
@@ -176,6 +178,7 @@ export class HomePage implements OnInit, AfterViewInit {
     this.filterReset();
     this.getTypes();
     this.getOffers();
+    this.getAddOption();
     this.getBuilds(ev);
   }
 
